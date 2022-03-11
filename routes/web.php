@@ -13,7 +13,7 @@ use Shopify\Context;
 use Shopify\Utils;
 use Shopify\Webhooks\Registry;
 use Shopify\Webhooks\Topics;
-use App\Http\Controllers\PageController;
+use App\Http\Controllers\PagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ use App\Http\Controllers\PageController;
 |
 */
 
-Route::get('/', PageController::class, 'welcome');
+Route::get('/', [PagesController::class, 'welcome']);
 
 Route::fallback(function (Request $request) {
     $shop = Utils::sanitizeShopDomain($request->query('shop'));
