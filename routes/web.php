@@ -13,6 +13,7 @@ use Shopify\Context;
 use Shopify\Utils;
 use Shopify\Webhooks\Registry;
 use Shopify\Webhooks\Topics;
+use App\Http\Controllers\PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,8 @@ use Shopify\Webhooks\Topics;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/', PageController::class, 'welcome');
 
 Route::fallback(function (Request $request) {
     $shop = Utils::sanitizeShopDomain($request->query('shop'));
