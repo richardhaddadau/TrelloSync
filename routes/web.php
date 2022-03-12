@@ -26,7 +26,7 @@ use App\Http\Controllers\PagesController;
 |
 */
 
-Route::get('/', [PagesController::class, 'welcome']);
+//Route::get('/', [PagesController::class, 'welcome']);
 
 Route::fallback(function (Request $request) {
     $shop = Utils::sanitizeShopDomain($request->query('shop'));

@@ -9,6 +9,7 @@ export function ProductsList({data}) {
             title: edge.node.title,
         };
     });
+
     return <ResourceList
         showHeader
         resourceName={{singular: 'product', plural: 'products'}}

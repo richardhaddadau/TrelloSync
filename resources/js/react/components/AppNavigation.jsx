@@ -14,8 +14,8 @@ function AppNavigation() {
     });
 
     const example = AppLink.create(app, {
-        label: 'Example',
-        destination: '/example',
+        label: 'About',
+        destination: '/about',
     });
     const navigationMenu = NavigationMenu.create(app, {
         items: [home, example],

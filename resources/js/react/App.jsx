@@ -1,18 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+
 import {Redirect} from "@shopify/app-bridge/actions";
 import {authenticatedFetch} from "@shopify/app-bridge-utils"
-import {ApolloClient, HttpLink, InMemoryCache} from '@apollo/client';
-import {ApolloProvider} from '@apollo/client/react';
 import {AppProvider} from "@shopify/polaris";
 import translations from "@shopify/polaris/locales/en.json";
-import '@shopify/polaris/dist/styles.css';
-import PageLayout from "./components/PageLayout";
-import ProductsPage from "./components/ProductsPage";
 import {Provider, useAppBridge} from '@shopify/app-bridge-react';
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+
+import {ApolloClient, HttpLink, InMemoryCache} from '@apollo/client';
+import {ApolloProvider} from '@apollo/client/react';
+import '@shopify/polaris/dist/styles.css';
+
 import ClientRouter from "./components/ClientRouter";
+import PageLayout from "./components/PageLayout";
 import AppNavigation from "./components/AppNavigation";
+import WelcomePage from "./components/WelcomePage";
+
+import '../../../public/css/app.css';
 
 function userLoggedInFetch(app) {
     const fetchFunction = authenticatedFetch(app);
@@ -50,9 +55,15 @@ function AppBridgeApolloProvider({children}) {
     );
 }
 
-function ExamplePage() {
-    return <div>Example Page</div>
+function AboutPage() {
+    return (
+        <div>
+            <h1>About Trello Sync</h1>
+        </div>
+    );
+
 }
+
 function App({shop, host, apiKey}) {
     const config = {apiKey: apiKey, shopOrigin: shop, host: host, forceRedirect: true};
 
@@ -65,8 +76,8 @@ function App({shop, host, apiKey}) {
                         <AppNavigation/>
                         <PageLayout>
                             <Switch>
-                                <Route path="/example" component={ExamplePage}/>
-                                <Route path="/" component={ProductsPage}/>
+                                <Route path="/about" component={AboutPage}/>
+                                <Route path="/" component={WelcomePage}/>
                             </Switch>
                         </PageLayout>
                     </AppBridgeApolloProvider>
